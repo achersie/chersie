@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import ProductItem from './productItem'
+import ProductItem from './ProductItem'
 
 import { incrementCartCount, decrementCartCount, resetCartCount } from '../store'
 

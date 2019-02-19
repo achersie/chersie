@@ -39,11 +39,6 @@ const productItem = (props) => {
             font-size: 12px
         }
       `} </style>
-      <style global jsx>{`
-        body {
-            margin: 0px;
-        }
-      `} </style>
     </div>
   )
 }

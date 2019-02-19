@@ -1,26 +1,17 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import Products from '../components/Products'
-import NavigationBar from '../components/navigationBar'
+import React, { Component } from 'react'
 
-class Index extends React.Component {
+import Layout from '../components/Layout'
+import Products from '../components/Products'
+
+class Index extends Component {
 
   render () {
-    const { cartCount } = this.props;
-    
     return (
-      <div>
-        <NavigationBar cart = { cartCount }/>
+      <Layout>
         <Products />
-      </div>
+      </Layout>
     )
   }
 }
 
-const mapStateToProps = (state) => {
-  const { cartCount } = state
-  return { cartCount }
-}  
-
-
-export default connect(mapStateToProps)(Index)
+export default Index

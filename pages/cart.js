@@ -1,25 +1,18 @@
-import React, { Component }  from 'react'
+import React, { Component } from 'react'
+
+import Layout from '../components/Layout'
 import OrderSummary from '../components/OrderSummary'
-import { connect } from 'react-redux'
-import NavigationBar from '../components/navigationBar'
 
 class Cart extends Component {
-    render () {
-        const { cartCount } = this.props;
-        
-        return (
-          <div>
-            <NavigationBar cart = { cartCount }/>
-            <OrderSummary />
-          </div>
-        )
-      }
+
+  render () {
+    
+    return (
+      <Layout>
+        <OrderSummary />
+      </Layout>
+    )
+  }
 }
 
-const mapStateToProps = (state) => {
-  const { cartCount } = state
-  return { cartCount }
-}  
-
-
-export default connect(mapStateToProps)(Cart)
+export default Cart

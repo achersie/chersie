@@ -8,7 +8,7 @@ const navigationBar = (props) => {
                 <li>Sneakers</li>
                 <li>Running</li>
                 <li className="cart">
-                    <Link href="/cart">
+                    <Link href="/Cart">
                     <a> Cart &nbsp; <span className="badge">{ props.cart }</span></a>
                     </Link>
                 </li>
@@ -45,7 +45,11 @@ const navigationBar = (props) => {
                 font-size: 11px;
                 line-height: 0.10em;
               }
+              a {
+                text-decoration: none;
+              }
             `}</style>
+            
         </nav>
   )
 }
