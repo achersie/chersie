@@ -14,7 +14,7 @@ const productItem = (props) => {
             float: left;
             width: 25%;
             height: 300px;
-            box-shadow: 0px 0px 1px 0px #444444;
+            box-shadow: 0px 0px 1px 0px #4444441a;
             text-align: center;
             vertical-align: middle;
             margin: 40px;

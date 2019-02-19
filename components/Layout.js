@@ -14,11 +14,11 @@ class Layout extends Component {
         { this.props.children }
         
         <style jsx global>{`
-        body {
-            font-family: Verdana, Helvetica, sans-serif;
-            font-size: 12px;
-            margin: 0;
-        }
+          body {
+              font-family: Verdana, Helvetica, sans-serif;
+              font-size: 12px;
+              margin: 0;
+          }
         `}</style>
       </div>
     )

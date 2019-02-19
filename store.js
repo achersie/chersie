@@ -3,7 +3,8 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 import thunkMiddleware from 'redux-thunk'
 
 const initialState = {
-  cartCount: 0
+  cartCount: 0,
+  products: []
 }
 
 export const actionTypes = {
@@ -17,7 +18,8 @@ export const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.INCREMENT:
       return Object.assign({}, state, {
-        cartCount: state.cartCount + 1
+        cartCount: state.cartCount + 1,
+        products: state.products.concat(action.payload)
       })
     case actionTypes.DECREMENT:
       return Object.assign({}, state, {
@@ -33,8 +35,8 @@ export const reducer = (state = initialState, action) => {
 }
 
 // ACTIONS
-export const incrementCartCount = () => dispatch => {
-  return dispatch({ type: actionTypes.INCREMENT })
+export const incrementCartCount = ( product ) => dispatch => {
+  return dispatch({ type: actionTypes.INCREMENT, payload: product })
 }
 
 export const decrementCartCount = () => dispatch => {

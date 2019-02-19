@@ -5,14 +5,20 @@ const navigationBar = (props) => {
   return (
         <nav>
             <ul>
+                <li>
+                  <Link href="/">
+                    <a>All Products</a>
+                  </Link>
+                </li>
                 <li>Sneakers</li>
                 <li>Running</li>
                 <li className="cart">
-                    <Link href="/Cart">
+                    <Link href="/cart">
                     <a> Cart &nbsp; <span className="badge">{ props.cart }</span></a>
                     </Link>
                 </li>
             </ul>
+            
             <style jsx>{`
               .cart {
                 float: right;
