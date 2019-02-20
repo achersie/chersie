@@ -4,7 +4,8 @@ import thunkMiddleware from 'redux-thunk'
 
 const initialState = {
   cartCount: 0,
-  products: []
+  products: [],
+  total: 0
 }
 
 export const actionTypes = {
@@ -19,11 +20,14 @@ export const reducer = (state = initialState, action) => {
     case actionTypes.INCREMENT:
       return Object.assign({}, state, {
         cartCount: state.cartCount + 1,
-        products: state.products.concat(action.payload)
+        products: state.products.concat(action.payload),
+        total:  state.total + action.payload.price
       })
     case actionTypes.DECREMENT:
       return Object.assign({}, state, {
-        cartCount: state.cartCount - 1
+        cartCount: state.cartCount - 1,
+        products: state.products.filter((product, index) => index !== action.index),
+        total:  state.total - action.price
       })
     case actionTypes.RESET:
       return Object.assign({}, state, {
@@ -39,8 +43,8 @@ export const incrementCartCount = ( product ) => dispatch => {
   return dispatch({ type: actionTypes.INCREMENT, payload: product })
 }
 
-export const decrementCartCount = () => dispatch => {
-  return dispatch({ type: actionTypes.DECREMENT })
+export const decrementCartCount = (index, price) => dispatch => {
+  return dispatch({ type: actionTypes.DECREMENT, index: index, price: price })
 }
 
 export const resetCartCount = () => dispatch => {

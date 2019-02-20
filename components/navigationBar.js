@@ -10,8 +10,8 @@ const navigationBar = (props) => {
                     <a>All Products</a>
                   </Link>
                 </li>
-                <li>Sneakers</li>
-                <li>Running</li>
+                <li>Nike</li>
+                <li>Adidas</li>
                 <li className="cart">
                     <Link href="/cart">
                     <a> Cart &nbsp; <span className="badge">{ props.cart }</span></a>
