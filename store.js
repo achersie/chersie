@@ -3,7 +3,7 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 import thunkMiddleware from 'redux-thunk'
 
 const initialState = {
-  cartCount: 0,
+  cartCount: 0,//(localStorage.hasOwnProperty('cart')) ? localStorage.getItem('cart') : 0,
   products: [],
   total: 0
 }
@@ -39,7 +39,15 @@ export const reducer = (state = initialState, action) => {
 }
 
 // ACTIONS
-export const incrementCartCount = ( product ) => dispatch => {
+export const incrementCartCount = ( product ) => (dispatch, getState) => {
+  const {cartCount, total} = getState();
+  var prods = JSON.parse(localStorage.getItem('products') || '[]');
+  prods.push(product);
+
+  localStorage.setItem('cartCount', cartCount + 1);
+  localStorage.setItem('products', JSON.stringify(prods));
+  localStorage.setItem('total', total + product.price);
+
   return dispatch({ type: actionTypes.INCREMENT, payload: product })
 }
 
@@ -52,6 +60,12 @@ export const resetCartCount = () => dispatch => {
 }
 
 export function initializeStore (state = initialState) {
+  if(typeof(Storage) !== "undefined") {
+    state.cartCount = (localStorage.getItem('cartCount')) ? localStorage.getItem('cartCount') : 0;
+    state.products = (localStorage.getItem('products')) ? JSON.parse(localStorage.getItem("products")) : [];
+    state.total = (localStorage.getItem('total')) ? localStorage.getItem('total') : 0;
+  }
+
   return createStore(
     reducer,
     state,
