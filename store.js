@@ -2,11 +2,30 @@ import { createStore, applyMiddleware } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import thunkMiddleware from 'redux-thunk'
 
-const initialState = {
-  cartCount: 0,//(localStorage.hasOwnProperty('cart')) ? localStorage.getItem('cart') : 0,
-  products: [],
-  total: 0
+export const loadState = () => {
+  try {
+      const serializedState = localStorage.getItem('state');
+    if ( serializedState === null) {
+      return undefined
+    }
+    return JSON.parse(serializedState)
+    
+  } catch (err) {
+    return undefined;
+  }
 }
+
+export const saveState = (state) => {
+  try {
+    const serializedState = JSON.stringify(state);
+    localStorage.setItem('state', serializedState);
+  } catch(err) {
+  }
+}
+
+const initialState = {  cartCount: 0, 
+                        products: [], 
+                        total: 0 };
 
 export const actionTypes = {
   INCREMENT: 'INCREMENT',
@@ -33,21 +52,14 @@ export const reducer = (state = initialState, action) => {
       return Object.assign({}, state, {
         cartCount: exampleInitialState.cartCount
       })
+
     default:
       return state
   }
 }
 
 // ACTIONS
-export const incrementCartCount = ( product ) => (dispatch, getState) => {
-  const {cartCount, total} = getState();
-  var prods = JSON.parse(localStorage.getItem('products') || '[]');
-  prods.push(product);
-
-  localStorage.setItem('cartCount', cartCount + 1);
-  localStorage.setItem('products', JSON.stringify(prods));
-  localStorage.setItem('total', total + product.price);
-
+export const incrementCartCount = ( product ) => (dispatch) => {
   return dispatch({ type: actionTypes.INCREMENT, payload: product })
 }
 
@@ -60,12 +72,7 @@ export const resetCartCount = () => dispatch => {
 }
 
 export function initializeStore (state = initialState) {
-  if(typeof(Storage) !== "undefined") {
-    state.cartCount = (localStorage.getItem('cartCount')) ? localStorage.getItem('cartCount') : 0;
-    state.products = (localStorage.getItem('products')) ? JSON.parse(localStorage.getItem("products")) : [];
-    state.total = (localStorage.getItem('total')) ? localStorage.getItem('total') : 0;
-  }
-
+  //state = loadState();
   return createStore(
     reducer,
     state,
