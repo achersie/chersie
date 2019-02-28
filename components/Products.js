@@ -4,7 +4,6 @@ import ProductItem from './ProductItem'
 
 import { incrementCartCount} from '../store'
 
-
 class Products extends Component {
 
     state = {
@@ -26,18 +25,17 @@ class Products extends Component {
     }
 
     render() {
-        let products = this.state.products.map( product => {
-            return <ProductItem key = { product.id } 
-                                name = { product.name } 
-                                url = { product.imageUrl } 
-                                price = { product.price } 
-                                addToCart = { () => this.increment(product) }/>
-        });
-
         return (
             <div>
                 <div className="container">
-                    { products }  
+                    { this.state.products.map( product => {
+                        return <ProductItem key = { product.id } 
+                                name = { product.name } 
+                                url = { product.imageUrl } 
+                                price = { product.price } 
+                                addToCart = { () => this.increment(product) }/> 
+                                })               
+                    }
                 </div>
         
                 <style jsx>{`
