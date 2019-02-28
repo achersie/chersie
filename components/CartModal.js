@@ -15,7 +15,7 @@ class CartModal extends Component {
             <div className={showHideClassName} onClick={handleClose}>
                 <div className='modal'>
                     <div className="container">
-                        {   products.map( ( product, index ) => {
+                        {   (products.length) ? products.map( ( product, index ) => {
                                 return (
                                     <div className = 'prod-container' key = {  index } >  
                                         <img className='image' src={ product.imageUrl }/> 
@@ -25,7 +25,7 @@ class CartModal extends Component {
                                         </div>
                                     </div>
                                 )
-                            }) 
+                            }) : <h4>Your cart is empty!</h4>
                         }
                     </div>
                     <Link href='/cart'><a><button className='view-cart'>View Cart</button></a></Link>

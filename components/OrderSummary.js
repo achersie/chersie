@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import Link from 'next/link'
+
 import { decrementCartCount, resetCartCount } from '../store'
 
 
@@ -17,7 +19,7 @@ class OrderSummary extends Component {
         return (
             <div>
                 <div className="container">
-                    {   products.map( ( product, index ) => {
+                    {   products.length ? products.map( ( product, index ) => {
                             return (
                                 <div className = 'prod-container' key = {  index } >  
                                     <img className='image' src={ product.imageUrl }/> 
@@ -30,7 +32,10 @@ class OrderSummary extends Component {
                                     </div>
                                 </div>
                             )
-                        }) 
+                        }) : <div>
+                                <h4>Your cart is empty!</h4>
+                                <Link href='/'><a><button className='continue'>Continue Shopping</button></a></Link>
+                             </div>
                     }
                     <div>
                         <h4>Total: <span>$  { total } </span></h4>
@@ -78,6 +83,14 @@ class OrderSummary extends Component {
                         width: 10%;
                         margin: 0px 10px;
                         color: red;
+                    }
+
+                    .continue {
+                        padding: 10px 30px;
+                        font-size: 12px;
+                        margin: 10px;
+                        border: 1px solid #444444;
+                        background-color: #fff;
                     }
                 `}</style>
             </div>

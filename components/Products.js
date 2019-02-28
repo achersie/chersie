@@ -27,7 +27,11 @@ class Products extends Component {
 
     render() {
         let products = this.state.products.map( product => {
-            return <ProductItem key = { product.id } name = { product.name } url = { product.imageUrl } price = { product.price } addToCart = { () => this.increment(product) }/>
+            return <ProductItem key = { product.id } 
+                                name = { product.name } 
+                                url = { product.imageUrl } 
+                                price = { product.price } 
+                                addToCart = { () => this.increment(product) }/>
         });
 
         return (
