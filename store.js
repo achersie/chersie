@@ -49,9 +49,7 @@ export const reducer = (state = initialState, action) => {
         total:  state.total - action.price
       })
     case actionTypes.RESET:
-      return Object.assign({}, state, {
-        cartCount: exampleInitialState.cartCount
-      })
+      return initialState
 
     default:
       return state

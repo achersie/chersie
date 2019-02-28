@@ -12,6 +12,11 @@ class OrderSummary extends Component {
         dispatch (decrementCartCount(id, price))
     }
 
+    reset = () => {
+        const { dispatch } = this.props
+        dispatch (resetCartCount())
+    }
+
     render() {
 
         const { products, total } = this.props;
@@ -21,7 +26,7 @@ class OrderSummary extends Component {
                 <div className="container">
                     {   products.length ? products.map( ( product, index ) => {
                             return (
-                                <div className = 'prod-container' key = {  index } >  
+                                <div className='prod-container' key = {  index } >  
                                     <img className='image' src={ product.imageUrl }/> 
                                     <div className='btn-container'>
                                         <span className='remove-btn' onClick= { () => this.decrement(index, product.price) }>Remove</span>
@@ -37,8 +42,9 @@ class OrderSummary extends Component {
                                 <Link href='/'><a><button className='continue'>Continue Shopping</button></a></Link>
                              </div>
                     }
-                    <div>
-                        <h4>Total: <span>$  { total } </span></h4>
+                    <div className='cart-footer'>
+                        <span>Total: $ { total } </span> 
+                        { products.length ? <span className='remove-all' onClick={() => this.reset()}>Remove All</span> : ''}
                     </div>
                 </div>
 
@@ -91,6 +97,16 @@ class OrderSummary extends Component {
                         margin: 10px;
                         border: 1px solid #444444;
                         background-color: #fff;
+                    }
+
+                    .remove-all {
+                        float: right;
+                        color: red;
+                        font-weight: normal;
+                    }
+
+                    .cart-footer {
+                        margin-top: 10px;
                     }
                 `}</style>
             </div>
