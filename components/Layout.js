@@ -21,8 +21,8 @@ class Layout extends Component {
 
     return (
       <div>
-        <CartModal show={this.state.show} handleClose={this.hideModal}/>
-         <Nav  cart = { cartCount }  handleOpen={this.showModal}/>
+          <Nav  cart = { cartCount }  handleOpen={this.showModal}/>
+          <CartModal show={this.state.show} handleClose={this.hideModal}/>
         { this.props.children }
         
         <style jsx global>{`

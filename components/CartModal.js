@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
+import Link from 'next/link'
+
 class CartModal extends Component {
 
     render() {
@@ -25,13 +27,14 @@ class CartModal extends Component {
                                 )
                             }) 
                         }
-                       
                     </div>
+                    <Link href='/cart'><a><button className='view-cart'>View Cart</button></a></Link>
+                    <span className='total'>Total: $ { total }</span>
                 </div>
             <style jsx>{`
                 .backdrop {
                     position: fixed;
-                    background: rgba(0,0,0,.65);
+                    background: rgba(0, 0, 0, 0.36);
                     left: 0;
                     right: 0;
                     top: 0;
@@ -50,8 +53,9 @@ class CartModal extends Component {
                 .modal {
                     position: fixed;
                     right: 4%;
-                    width: 25%;
-                    top: 18%;
+                    width: 28%;
+                    max-height: 450px;
+                    top: 11%;
                     padding: 12px;
                     background-color: #fff;
                 }
@@ -62,8 +66,26 @@ class CartModal extends Component {
                     }
                 }
 
+                .container {
+                    max-height: 300px;
+                    padding: 0px 15px;
+                    overflow-y: scroll;
+                    overflow-x: hidden;
+                    border-bottom: 1px solid #4444441a;
+                }
+
                 .view-cart {
+                    padding: 7px 25px;
+                    font-size: 12px;
+                    margin: 10px;
+                    border: 1px solid #444444;
+                    background-color: #fff;
+                }
+
+                .total {
                     float: right;
+                    margin: 15px 30px 10px 10px;
+                    font-weight: bold;
                 }
 
                 .image {
