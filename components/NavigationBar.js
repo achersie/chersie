@@ -12,10 +12,8 @@ const navigationBar = (props) => {
                 </li>
                 <li>Nike</li>
                 <li>Adidas</li>
-                <li className="cart">
-                    <Link href="/cart">
+                <li className="cart" onClick={props.handleOpen}>
                     <a> Cart &nbsp; <span className="badge">{ props.cart }</span></a>
-                    </Link>
                 </li>
             </ul>
             
