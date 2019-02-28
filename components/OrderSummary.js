@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import Link from 'next/link'
 
 import { decrementCartCount, resetCartCount } from '../store'
-
+import '../style.css'
 
 class OrderSummary extends Component {
 
@@ -23,7 +23,7 @@ class OrderSummary extends Component {
 
         return (
             <div>
-                <div className="container">
+                <div className="orderSummary-cont">
                     {   products.length ? products.map( ( product, index ) => {
                             return (
                                 <div className='prod-container' key = {  index } >  
@@ -31,7 +31,7 @@ class OrderSummary extends Component {
                                     <div className='btn-container'>
                                         <span className='remove-btn' onClick= { () => this.decrement(index, product.price) }>Remove</span>
                                     </div>
-                                    <div className='details'>
+                                    <div className='orderSummary-details'>
                                         <span className='name'>{ product.name }</span>
                                         <span className='price'>$ { product.price }</span>
                                     </div>
@@ -47,68 +47,6 @@ class OrderSummary extends Component {
                         { products.length ? <span className='remove-all' onClick={() => this.reset()}>Remove All</span> : ''}
                     </div>
                 </div>
-
-                <style jsx>{`
-                    .container {
-                        padding: 100px 50px;
-                        text-align: center;
-                        width: 40%;
-                        margin: auto;
-                    }   
-
-                    .prod-container {
-                        border-bottom: 1px solid #44444429;
-                    }
-
-                    .image {
-                        width: 90px;
-                    }
-
-                    .details {
-                        float: right;
-                        line-height: 5.9em;
-                        width: 50%;
-                        margin: 0px 10px;
-                    }
-
-                    .name .price {
-                        margin: 0px 30px;
-                    }
-
-                    .name {
-                        float: left;
-                    }
-
-                    .price {
-                        float: right;
-                    }
-
-                    .btn-container {
-                        float: right;
-                        line-height: 5.9em;
-                        width: 10%;
-                        margin: 0px 10px;
-                        color: red;
-                    }
-
-                    .continue {
-                        padding: 10px 30px;
-                        font-size: 12px;
-                        margin: 10px;
-                        border: 1px solid #444444;
-                        background-color: #fff;
-                    }
-
-                    .remove-all {
-                        float: right;
-                        color: red;
-                        font-weight: normal;
-                    }
-
-                    .cart-footer {
-                        margin-top: 10px;
-                    }
-                `}</style>
             </div>
         )
     }

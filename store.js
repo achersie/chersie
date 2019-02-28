@@ -70,7 +70,6 @@ export const resetCartCount = () => dispatch => {
 }
 
 export function initializeStore (state = initialState) {
-  //state = loadState();
   return createStore(
     reducer,
     state,
