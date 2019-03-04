@@ -30,7 +30,8 @@
     background-color: #444444;
     color: #fff;
     padding: 10px 60px;
-    font-size: 12px
+    font-size: 12px;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 992px) {
@@ -39,6 +40,7 @@
   }
   .addToCart {
     padding: 10px 35px;
+    cursor: pointer;
   }
   prodItem-cont {
     height: 235px;
@@ -51,6 +53,7 @@
   }
   .addToCart {
     padding: 10px 35px;
+    cursor: pointer;
   }
   prodItem-cont {
     height: 237px;
@@ -112,6 +115,7 @@
     margin: 10px;
     border: 1px solid #444444;
     background-color: #fff;
+    cursor: pointer;
 }
 
 .total {
@@ -177,10 +181,15 @@
     background-color: #fff;
 }
 
+.remove-btn {
+    cursor: pointer;
+}
+
 .remove-all {
     float: right;
     color: red;
     font-weight: normal;
+    cursor: pointer;
 }
 
 .cart-footer {
@@ -191,6 +200,7 @@
 .cart {
     float: right;
     margin-right: 100px;
+    cursor: pointer;
   }
 
   nav {
